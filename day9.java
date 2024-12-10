@@ -20,8 +20,8 @@ public class day9 {
                     meep.add("" + id);
                 }
                 id++;
-            }
 
+            }
             else{
                 for(int y=0; y< nummy; y++)
                 {
@@ -32,21 +32,48 @@ public class day9 {
             spot++;
         }
 
+
         in.close();
+        int s=1;
+        int y=0;
 
-        for(int x=0; x<count; x++)
-        {
-            if(meep.get(x).equals("."))
-            {
-                meep.set(x, meep.get(meep.size()-x));
-                meep.set(meep.size()-x, ".");
-            }
-        }
-
-        for(String a: meep)
-        {
+        for(String a: meep){
             System.out.print(a);
         }
+        System.out.println();
+        
+        while(s<=12)
+        {
+            if(meep.get(y).equals("."))
+            {
+                meep.set(y, meep.get(meep.size()-s));
+                meep.set(meep.size()-s, ".");
+                s++;
+                for(String a: meep){
+                    System.out.print(a);
+                }
+                System.out.println();
+                System.out.println(s + "    " + meep.get(y) + "    " + meep.get(meep.size()-s));
+            }
+            y++;
+        }
+        //size 42 runs 12 count 14
+
+        for(String a: meep){
+            System.out.print(a);
+        }
+        System.out.println();
+  
+        int total = 0;
+        for(int x=0; x<meep.size(); x++)
+        {
+            if(meep.get(x).equals("."))
+                break;
+            total += (x * (Integer.parseInt(meep.get(x))));
+        }
+
+        System.out.print(total);
+
     }
 
 }
