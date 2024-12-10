@@ -3,7 +3,7 @@ import java.util.*;
 
 public class day9 {
     public static void main(String[] args) throws IOException {
-        Scanner in = new Scanner(new File("day9test.txt"));
+        Scanner in = new Scanner(new File("day9.txt"));
         in.useDelimiter("");
         int spot = 0;
         int id = 0;
@@ -37,23 +37,17 @@ public class day9 {
         int s=1;
         int y=0;
 
-        for(String a: meep){
-            System.out.print(a);
-        }
-        System.out.println();
         
-        while(s<=12)
+        while(s<=count)
         {
             if(meep.get(y).equals("."))
             {
+                while((meep.get(meep.size()-s)).equals(".")){
+                    s++;
+                }
                 meep.set(y, meep.get(meep.size()-s));
                 meep.set(meep.size()-s, ".");
                 s++;
-                for(String a: meep){
-                    System.out.print(a);
-                }
-                System.out.println();
-                System.out.println(s + "    " + meep.get(y) + "    " + meep.get(meep.size()-s));
             }
             y++;
         }
